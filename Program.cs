@@ -1,7 +1,12 @@
+using TicketTrackingSystem;
+
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 builder.Services.AddControllersWithViews();
+
+builder.Configuration.Bind("MongoDB", new MongoDBSettings());
+builder.Services.AddSingleton<IMongoDBContext, MongoDBContext>();
 
 var app = builder.Build();
 
