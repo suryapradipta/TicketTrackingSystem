@@ -43,6 +43,6 @@ public class AuthService : IAuthService
 
         await _userRepository.CreateUserAsync(newUser);
 
-        return true; // Registration successful
+        return true; 
     }
 }

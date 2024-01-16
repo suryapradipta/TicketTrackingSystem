@@ -10,15 +10,19 @@
 <form asp-action="Login" method="post">
     <div>
         <label asp-for="Username"></label>
-        <input asp-for="Username" />
+        <input asp-for="Username"/>
         <span asp-validation-for="Username"></span>
     </div>
 
     <div>
         <label asp-for="Password"></label>
-        <input asp-for="Password" type="password" />
+        <input asp-for="Password" type="password"/>
         <span asp-validation-for="Password"></span>
     </div>
 
     <button type="submit">Login</button>
 </form>
+
+<p>
+    <a asp-action="Register">Don't have an account? Register here</a>
+</p>

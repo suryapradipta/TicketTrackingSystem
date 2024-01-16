@@ -9,6 +9,7 @@ builder.Configuration.Bind("MongoDB",new MongoDBSettings());
 // Add services to the container.
 builder.Services.AddControllersWithViews();
 
+builder.Services.AddHttpContextAccessor();
 builder.Services.AddScoped<IUserRepository, UserRepository>();
 builder.Services.AddScoped<IAuthService, AuthService>();
 builder.Services.AddScoped<IBugRepository, BugRepository>();
@@ -48,13 +49,13 @@ app.MapControllerRoute(
     pattern: "{controller=Home}/{action=Index}/{id?}");
 
 app.MapControllerRoute(
-        name: "bug",
+        name: "bugs",
         pattern: "Bugs/{action=Index}/{id?}",
         defaults: new { controller = "Bugs" })
     .RequireAuthorization("RequireQA");
 
 app.MapControllerRoute(
-        name: "bugResolution",
+        name: "bugs",
         pattern: "Bugs/{action=Resolve}/{id?}",
         defaults: new { controller = "Bugs" })
     .RequireAuthorization("RequireRD");
