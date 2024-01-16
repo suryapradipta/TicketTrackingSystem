@@ -1,4 +1,4 @@
-namespace TicketTrackingSystem.Models;
+namespace TicketTrackingSystem.Models.ViewModels;
 
 public class ErrorViewModel
 {

@@ -1,6 +1,8 @@
 ﻿using System.Diagnostics;
+using System.Security.Claims;
 using Microsoft.AspNetCore.Mvc;
 using TicketTrackingSystem.Models;
+using TicketTrackingSystem.Models.ViewModels;
 
 namespace TicketTrackingSystem.Controllers;
 
@@ -15,7 +17,15 @@ public class HomeController : Controller
 
     public IActionResult Index()
     {
-        return View();
+        var username = User.Identity?.Name;
+
+        var viewModel = new IndexViewModel
+        {
+            Username = username,
+            Role = User.FindFirst(ClaimTypes.Role)?.Value,
+        };
+        
+        return View(viewModel);
     }
 
     public IActionResult Privacy()
